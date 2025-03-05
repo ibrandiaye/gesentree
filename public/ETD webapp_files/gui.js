@@ -964,7 +964,8 @@ class Gui {
         document.getElementById('dg13EmrtdFields').innerHTML = '';
         document.getElementById('numelec_input').value =result.data.fields.number;
         document.getElementById('commune_input').value =result.data.fields.municipality;
-        
+        document.getElementById('photo_portrait').value =result.data.fields.number;
+
         const newEntry =
             `<table>
                 <tr>
