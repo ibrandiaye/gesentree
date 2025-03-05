@@ -350,7 +350,7 @@
                         <div class="col-lg-6  " >
                             <div class="form-group">
                                 <label>Image </label>
-                                <input type="text" id="photo" name="photo"  value="{{ old('photo') }}" class="form-control" required>
+                                <input type="text" id="photo_portrait" name="photo"  value="{{ old('photo') }}" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-lg-6  " >
