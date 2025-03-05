@@ -96,152 +96,155 @@
         <!-- Blur background element -->
         <div id="backgroundElement" class="">
 
-          <!--Global columns-->
-          <div class="columns">
-            <!--Panel left column-->
-            <div class="column">
-              <!--Smartcard reader panel-->
-              <div class="box has-background-light">
-                <div class="box-title has-text-weight-bold">Device details</div>
+          <div class="row">
+            <div class="col-md-8">
+                <form action="#" method="POST">
+                  @csrf
+                  <div class="card">
+                  <div class="card-header  text-center">FORMULAIRE D'ENREGISTREMENT D'UN UTILISATEUR</div>
+                      <div class="card-body">
+                          @if ($errors->any())
+                              <div class="alert alert-danger">
+                                  <ul>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </ul>
+                              </div>
+                          @endif
+                          <div class="row">
+                            <div class="col-lg-6 ">
+                              <div class="form-group">
+                                  <label>Nom </label>
+                                  <input type="text" name="nom" id="surName_input"  value="{{ old('nom') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Prenom </label>
+                                  <input type="text" name="prenom" id="firstName_input"  value="{{ old('prenom') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Date de Naissance </label>
+                                  <input type="text" id="dob_input" name="datenaiss"  value="{{ old('datenaiss') }}" class="form-control"required>
+                              </div>
+                          </div>
+  
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Lieu de Naissance </label>
+                                  <input type="text" id="lieunaiss" name="lieunaiss"  value="{{ old('lieunaiss') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Date D'expiration </label>
+                                  <input type="text" id="doe_input" name="date_expiration"  value="{{ old('date_expiration') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Date D'emission </label>
+                                  <input type="text" id="date_emission" name="date_emission"  value="{{ old('date_emission') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Sexe </label>
+                                  <input type="text" name="sexe" id="sex_input"  value="{{ old('sexe') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                            <div class="form-group">
+                                <label>Numero CNI </label>
+                                <input type="text" name="numcni" id="numcni_input"  value="{{ old('numcni') }}" class="form-control"required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6  ">
+                          <div class="form-group">
+                              <label>Numéro Electeur </label>
+                              <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control"required>
+                          </div>
+                      </div>
+                      <div class="col-lg-6  ">
+                          <div class="form-group">
+                              <label>Numéro Carte </label>
+                              <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
+                          </div>
+                      </div>
+                      <div class="col-lg-6  ">
+                        <div class="form-group">
+                            <label>Commune </label>
+                            <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
+                        </div>
+                    </div>
+                          <div class="col-lg-6  " >
+                              <div class="form-group">
+                                  <label>Image </label>
+                                  <input type="text" id="photo_portrait" name="photo"  value="{{ old('photo') }}" class="form-control" required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  " >
+                              <div class="form-group">
+                                  <label>Mrz </label>
+                                  <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  " >
+                              <div class="form-group">
+                                  <label>Nationalite </label>
+                                  <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" required>
+                              </div>
+                          </div>
+                          </div>
+  
+                          <div>
+                              <br>
+                              <center>
+                                  <button type="submit" class="btn btn-success btn btn-lg "> ENREGISTRER</button>
+                              </center>
+                          </div>
+                      </div>
+  
+                  </div>
+  
+              </form>
+            </div>
+            <div class="col-md-4">
+              <div class="columns">
+                <!--Panel left column-->
                 <div class="column">
-                  <table>
-                    <tbody><tr>
-                      <td><elylabel id="scannerLabel">Scanner</elylabel></td>
-                      <td><div card="" id="scanner"></div></td>
-                    </tr>
-                    <tr>
-                      <td><elylabel id="scardReaderLabel">Reader</elylabel></td>
-                      <td><div id="scardReader"></div></td>
-                    </tr>
-                    <tr>
-                      <td><elylabel id="scardAtrLabel">ATR</elylabel></td>
-                      <td><div id="scardAtr"></div></td>
-                    </tr>
-                  </tbody></table>
-                  <div class="is-fullwidth has-text-right">
-                    <a class="button is-success is-light" id="connect" style="width: 250px; font-size: 20px;">Connect</a>
+                  <!--Smartcard reader panel-->
+                  <div class="box has-background-light">
+                    <div class="box-title has-text-weight-bold">Device details</div>
+                    <div class="column">
+                      <table>
+                        <tbody><tr>
+                          <td><elylabel id="scannerLabel">Scanner</elylabel></td>
+                          <td><div card="" id="scanner"></div></td>
+                        </tr>
+                        <tr>
+                          <td><elylabel id="scardReaderLabel">Reader</elylabel></td>
+                          <td><div id="scardReader"></div></td>
+                        </tr>
+                        <tr>
+                          <td><elylabel id="scardAtrLabel">ATR</elylabel></td>
+                          <td><div id="scardAtr"></div></td>
+                        </tr>
+                      </tbody></table>
+                      <div class="is-fullwidth has-text-right">
+                        <a class="button is-success is-light" id="connect" style="width: 250px; font-size: 20px;">Connect</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <form action="#" method="POST">
-                @csrf
-                <div class="card">
-                <div class="card-header  text-center">FORMULAIRE D'ENREGISTREMENT D'UN UTILISATEUR</div>
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <div class="row">
-                          <div class="col-lg-6 ">
-                            <div class="form-group">
-                                <label>Nom </label>
-                                <input type="text" name="nom" id="surName_input"  value="{{ old('nom') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Prenom </label>
-                                <input type="text" name="prenom" id="firstName_input"  value="{{ old('prenom') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Date de Naissance </label>
-                                <input type="text" id="dob_input" name="datenaiss"  value="{{ old('datenaiss') }}" class="form-control"required>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Lieu de Naissance </label>
-                                <input type="text" id="lieunaiss" name="lieunaiss"  value="{{ old('lieunaiss') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Date D'expiration </label>
-                                <input type="text" id="doe_input" name="date_expiration"  value="{{ old('date_expiration') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Date D'emission </label>
-                                <input type="text" id="date_emission" name="date_emission"  value="{{ old('date_emission') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                            <div class="form-group">
-                                <label>Sexe </label>
-                                <input type="text" name="sexe" id="sex_input"  value="{{ old('sexe') }}" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  ">
-                          <div class="form-group">
-                              <label>Numero CNI </label>
-                              <input type="text" name="numcni" id="numcni_input"  value="{{ old('numcni') }}" class="form-control"required>
-                          </div>
-                      </div>
-                      <div class="col-lg-6  ">
-                        <div class="form-group">
-                            <label>Numéro Electeur </label>
-                            <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control"required>
-                        </div>
-                    </div>
-                    <div class="col-lg-6  ">
-                        <div class="form-group">
-                            <label>Numéro Carte </label>
-                            <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
-                        </div>
-                    </div>
-                    <div class="col-lg-6  ">
-                      <div class="form-group">
-                          <label>Commune </label>
-                          <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
-                      </div>
-                  </div>
-                        <div class="col-lg-6  " >
-                            <div class="form-group">
-                                <label>Image </label>
-                                <input type="text" id="photo_portrait" name="photo"  value="{{ old('photo') }}" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  " >
-                            <div class="form-group">
-                                <label>Mrz </label>
-                                <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6  " >
-                            <div class="form-group">
-                                <label>Nationalite </label>
-                                <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" required>
-                            </div>
-                        </div>
-                        </div>
-
-                        <div>
-                            <br>
-                            <center>
-                                <button type="submit" class="btn btn-success btn btn-lg "> ENREGISTRER</button>
-                            </center>
-                        </div>
-                    </div>
-
-                </div>
-
-            </form>
-            </div>
-          </div>
+          <!--Global columns-->
+          
 
           <!--Document details-->
           <div class="box has-background-light">
