@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
 
-//route user 
+//route user
 Route::resource('user', UserController::class)->middleware(['auth','admin']);
 Route::get('/modifier/motdepasse',[UserController::class,'modifierMotDePasse'])->name("modifier.motdepasse")->middleware(['auth']);
 Route::post('/update/password',[UserController::class,'updatePassword'])->name("user.password.update")->middleware(['auth']);//->middleware(["auth","checkMaxSessions"]);
@@ -39,3 +39,14 @@ Route::resource('service', ServiceController::class)->middleware(['auth','admin'
 
 //Employe
 Route::resource('employe', EmployeController::class)->middleware(['auth','admin']);
+
+
+Route::get('/teste', function () {
+    return view('test');
+});
+
+
+//visiteur
+Route::get('/visiteur_add', function () {
+    return view('visiteur.add');
+});
