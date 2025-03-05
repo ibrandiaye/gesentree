@@ -207,8 +207,10 @@
           30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
         }
       </style>
-      <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    </head>
+ <!-- App css -->
+ <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+ <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+ <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />    </head>
   <body class="theme" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.6.0">
     <!--Header-->
     <div class="section">
