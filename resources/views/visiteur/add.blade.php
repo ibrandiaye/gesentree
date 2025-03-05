@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<!-- saved from url=(0060)https://www.elyctis.com/demo/elytraveldoc/ver/rc8.6/sen-cni/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="{{ asset('ETD webapp_files/jquery-1.11.0.min.js') }}"></script>
+@extends('welcome')
+
+@section('title', '| Enregister Département')
+
+@section('css')
+<script src="{{ asset('ETD webapp_files/jquery-1.11.0.min.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/jquery.min.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/webserial.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/websocket.js') }}"></script>
@@ -207,11 +210,27 @@
           30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
         }
       </style>
- <!-- App css -->
- <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
- <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
- <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />    </head>
-  <body class="theme" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.6.0">
+
+
+@endsection()
+
+@section('content')
+<div class="row">
+
+  <div class="col-12">
+      <div class="page-title-box">
+          <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                  <li class="breadcrumb-item"><a href="javascript: void(0);">Tableau de bord</a></li>
+                  <li class="breadcrumb-item active"><a href="javascript: void(0);">Site </a></li>
+              </ol>
+          </div>
+          <h4 class="page-title">Enregistrer un Site</h4>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
     <!--Header-->
     <div class="section">
       <div class="container is-centered">
@@ -771,5 +790,7 @@
 
 
    </div>
-</body>
-</html>
+  </div>
+</div>
+@endsection
+
