@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<!-- saved from url=(0060)https://www.elyctis.com/demo/elytraveldoc/ver/rc8.6/sen-cni/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="{{ asset('ETD webapp_files/jquery-1.11.0.min.js') }}"></script>
+
+@extends('welcome')
+
+@section('title', '| Enregister Département')
+@section("css")
+<script src="{{ asset('ETD webapp_files/jquery-1.11.0.min.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/jquery.min.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/webserial.js') }}"></script>
 <script src="{{ asset('ETD webapp_files/websocket.js') }}"></script>
@@ -23,9 +26,7 @@
 
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");</style>
-    <title>ETD webapp</title>
     <!-- Manifest and Favicon -->
     <link rel="manifest" href="https://www.elyctis.com/demo/elytraveldoc/ver/rc8.6/sen-cni/manifest.json">
     <link rel="icon" type="image/png" href="https://www.elyctis.com/images/etd.png">
@@ -46,172 +47,29 @@
     <!-- <script src="js/misc/require.js"></script> -->
     <link rel="manifest" href="https://www.elyctis.com/demo/elytraveldoc/ver/rc8.6/sen-cni/manifest.json">
 
-    <style>
-      html {
-        height: 100%;
-      }
-      body {
-        height: 100%;
-        margin: 0;
-      }
-      div {
-        font-family: 'Manrope', sans-serif;
-      }
-      .filler {
-        /* background-color: lightgoldenrodyellow; */
-        width: 100%;
-        height: 100%;
-        padding: 60px 0;
-        box-sizing: border-box;
-      }
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1030;
-      }
-      .footer {
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        z-index: 30;
-        height: 55px;
-        font-size: 1.2rem;
-      }
-      .theme, .footer {
-        /* enable this for light */
-        background-color: #FFF;
-        color: #333;
+    
+@endsection
 
-        /* enable this for soft */
-        /*background-color: #EEE;
-        color: #222;*/
+@section('content')
+<div class="row">
 
-        /* enable this for dark */
-        /*background-color: #222;
-        color: #EEE;*/
-      }
-      .details {
-        background-color: #111;
-        position:relative;
-        align-content:center;
-      }
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tableau de bord</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Site </a></li>
+                </ol>
+            </div>
+            <h4 class="page-title">Enregistrer un Site</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
 
-      .box-title {
-        text-shadow: 1px 1px 15px white;
-        font-weight: bolder;
-        color: #333;
-        /*color: #FF851B;*/ /* orange */
-        font-size: 1.1rem;
-      }
-      .elyBrowse {
-        /* margin-top: 10px; */
-        /* border: 1px #Ff951320 solid; */
-        /* border: 1px #20202020 solid; */
-        /* background-color: #FFFFFFA0;
-        border-radius: 6px; */
-        padding: 0.5rem;
-      }
-      elyLabel {
-        /* color: #Ff9513A0; */
-        font-size: small;
-        color: grey;
-        /* font-style: italic; */
-        /* font-weight: bold; */
-      }
-      table,
-      td,
-      th {
-        border: 0px none;
-        padding: 8px;
-        border-collapse: collapse;
-      }
-      .fp-image {
-        margin-top : 10px;
-        padding-top: 0.2rem;
-        margin-right: 10px;
-        padding-right: 0.2rem;
-      }
-      .MRZ {
-        padding-top: 1.25rem;
-        font-family: 'OCRB Regular', monospace;
-        background-color: #FFFFFFA0;
-        letter-spacing: 0.1rem;
-      }
-      .tag-info, .tag-success, .tag-fail, .tag-warning, .tag-pending {
-        padding: 0.3rem;
-        padding-top: 0.05rem;
-        padding-bottom: 0.15rem;
-        padding-right: 0.5rem;
-        margin-left: 10px;
-        border-radius: 10px;
-      }
-      .tag-info { background-color: #FFFFFF; }
-      .tag-success { background-color: #81C784; }
-      .tag-fail { background-color: #FF9E80; }
-      .tag-warning { background-color: #F9E231; }
-      .tag-pending { background-color: #80D7FF; }
-
-      /* Menu Button style */
-      .menu-button {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%; /* Makes the button round */
-        font-size: large;
-        font-weight: bolder;
-        background-color: #EF8105;
-        color: #fff;
-        border: none;
-        display: flex;
-        justify-content: center;
-        vertical-align: middle;
-        align-items: center;
-      }
-      .menu-button:hover {
-        background-color: #FF9513;
-        cursor: pointer;
-      }
-
-      /* Close Button style */
-      .close {
-        position: fixed;
-        top: 5px;
-        right: 10px;
-        /* width: 35px;
-        height: 35px;
-        border-radius: 5%; */
-        font-size: large;
-        font-weight: bolder;
-        /* background-color: #EF8105;
-        color: #fff; */
-        color: #EF8105;
-        /* border: none; */
-      }
-
-      .close:hover,
-      .close:focus {
-        /* background-color: #FF9513; */
-        color: #FF9513;
-        cursor: pointer;
-      }
-    </style>
-  <style id="monica-reading-highlight-style">
-        .monica-reading-highlight {
-          animation: fadeInOut 1.5s ease-in-out;
-        }
-
-        @keyframes fadeInOut {
-          0%, 100% { background-color: transparent; }
-          30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
-        }
-      </style>
-      <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    </head>
-  <body class="theme" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.6.0">
     <!--Header-->
-    <div class="section">
+   {{--  <div class="section">
       <div class="container is-centered">
         <div class="columns">
           <div class="column">
@@ -224,7 +82,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <div class="section theme">
 
@@ -769,5 +627,7 @@
 
 
    </div>
-</body>
-</html>
+    </div>
+</div>
+   @endsection
+

@@ -207,8 +207,8 @@
           30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
         }
       </style>
-    <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-</head>
+      <link href=" {{ asset('assets/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    </head>
   <body class="theme" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.6.0">
     <!--Header-->
     <div class="section">
@@ -307,8 +307,14 @@
                         </div>
                         <div class="col-lg-6  ">
                             <div class="form-group">
-                                <label>Date D'espiration </label>
+                                <label>Date D'expiration </label>
                                 <input type="text" id="doe_input" name="date_expiration"  value="{{ old('date_expiration') }}" class="form-control"required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6  ">
+                            <div class="form-group">
+                                <label>Date D'emission </label>
+                                <input type="text" id="date_emission" name="date_emission"  value="{{ old('date_emission') }}" class="form-control"required>
                             </div>
                         </div>
                         <div class="col-lg-6  ">
@@ -330,15 +336,33 @@
                         </div>
                     </div>
                     <div class="col-lg-6  ">
+                        <div class="form-group">
+                            <label>Numéro Carte </label>
+                            <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6  ">
                       <div class="form-group">
                           <label>Commune </label>
                           <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
                       </div>
                   </div>
-                        <div class="col-lg-6  " style="display: none;">
+                        <div class="col-lg-6  " >
                             <div class="form-group">
-                                <label>Numero </label>
-                                <input type="hidden" id="docNumber_input" name="numero"  value="{{ old('numero') }}" class="form-control"required>
+                                <label>Image </label>
+                                <input type="text" id="photo_portrait" name="photo"  value="{{ old('photo') }}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6  " >
+                            <div class="form-group">
+                                <label>Mrz </label>
+                                <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6  " >
+                            <div class="form-group">
+                                <label>Nationalite </label>
+                                <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" required>
                             </div>
                         </div>
                         </div>

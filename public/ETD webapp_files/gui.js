@@ -525,6 +525,10 @@ class Gui {
             $("#numelec_input").val('');
             $("#docNumber_input").val('');
             $("#date_emission").val('');
+            $("#photo_portrait").val('');
+            $("#mrz").val('');
+
+
 
         } else {
             $("#familyName-idl").text('');
@@ -547,6 +551,8 @@ class Gui {
             $("#numelec_input").val('');
             $("#docNumber_input").val('');
             $("#date_emission").val('');
+            $("#photo_portrait").val('');
+            $("#mrz").val('');
         }
         this.#isMrzValid = false;
         document.getElementById("fingerprintDisplay").style.display = 'none';
