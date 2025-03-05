@@ -40,7 +40,8 @@
     <script src="{{ asset('ETD webapp_files/gui.js') }}"></script>
     </head>
 
-<body>
+<body class="theme" monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.6.0">
+  
 
     <!-- Begin page -->
     <div id="wrapper">
