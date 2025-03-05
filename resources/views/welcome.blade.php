@@ -298,10 +298,10 @@
     </a>
  --}}
     <!-- Vendor js -->
-{{--     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
- --}}
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+
     <!-- App js -->
-    {{-- <script src="{{ asset('assets/js/app.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script>
          function convertDateFormat(dateString) {
     // Séparer la date par le caractère "/"
