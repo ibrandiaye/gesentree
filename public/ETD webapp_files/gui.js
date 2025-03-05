@@ -1033,6 +1033,8 @@ class Gui {
                     this.setImageSrc(idx, "images/cross.png", 48, 48);
                 } else {
                     this.setImageSrc(idx, imageUrl, 240, 320);
+                    document.getElementById('photo').value =imageUrl;
+
                 }
             }
         }
