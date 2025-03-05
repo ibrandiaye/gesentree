@@ -524,6 +524,7 @@ class Gui {
             $("#numcni_input").val('');
             $("#numelec_input").val('');
             $("#docNumber_input").val('');
+            $("#date_emission").val('');
 
         } else {
             $("#familyName-idl").text('');
@@ -545,6 +546,7 @@ class Gui {
             $("#numcni_input").val('');
             $("#numelec_input").val('');
             $("#docNumber_input").val('');
+            $("#date_emission").val('');
         }
         this.#isMrzValid = false;
         document.getElementById("fingerprintDisplay").style.display = 'none';
@@ -732,6 +734,8 @@ class Gui {
         szMrz = szMrz.trim().replaceAll("_", "<");
         // Update the secret 
         //secret = szMrz;
+        document.getElementById('mrz').value =
+        szMrz.replace(/</g, '&lt;').replace(/(?:\r\n|\r|\n)/g, ' ').trim().replace(/ /g, '<br>');
         return szMrz;
     }
 
