@@ -12,4 +12,9 @@ class Visiteur extends Model
         'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
         'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte'
     ];
+
+    public function entree()
+    {
+        return $this->hasOne(Entree::class);
+    }
 }

@@ -11,10 +11,10 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Tableau de bord</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Region </a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Site </a></li>
                 </ol>
             </div>
-            <h4 class="page-title">Enregistrer un Region</h4>
+            <h4 class="page-title">Enregistrer un Site</h4>
         </div>
     </div>
 </div>
@@ -50,44 +50,24 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Region</label>
-                        <select class="form-control" name="region_id" id="region_id">
+                        <label>Site</label>
+                        <select class="form-control" name="site_id" id="site_id">
                             <option value="">Selectionnez</option>
-                            @foreach ($regions as $region)
-                            <option value="{{$region->id}}" {{$region->id==$user->region_id  ? 'selected' : ''}}>{{$region->nom}}</option>
+                            @foreach ($sites as $site)
+                            <option value="{{$site->id}}" {{$site->id==$user->site_id  ? 'selected' : ''}}>{{$site->nom}}</option>
                                 @endforeach
 
                         </select>
                     </div>
-                        <div class="col-lg-6">
-                            <label>Departement</label>
-                            <select class="form-control" id="departement_id" name="departement_id" >
-                                <option value="">Selectionnez</option>
-                                @foreach ($departements as $departement)
-                                <option value="{{$departement->id}}" {{$departement->id==$user->departement_id ? 'selected' : ''}}>{{$departement->nom}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <label>Arrondissement</label>
-                            <select class="form-control" name="arrondissement_id" id="arrondissement_id">
-                                <option value="">Selectionnez</option>
-                                @foreach ($arrondissements as $arrondissement)
-                                <option value="{{$arrondissement->id}}" {{$arrondissement->id==$user->arrondissement_id ? 'selected' : ''}}>{{$arrondissement->nom}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
+                       
+                       
                     <div class="col-lg-6">
                         <label>Role</label>
                         <select class="form-control" name="role" required="">
                             <option value="">Selectionner</option>
                             <option value="admin" {{$user->role=="admin" ? 'selected' : ''}}>Admin</option>
-                            <option value="prefet" {{$user->role=="prefet" ? 'selected' : ''}}>Prefet</option> 
-                            <option value="sous_prefet" {{$user->role=="sous_prefet" ? 'selected' : ''}}>Sous Prefet</option>
-                            <option value="gouverneur" {{$user->role=="gouverneur" ? 'selected' : ''}}>gouverneur</option>
-                            <option value="superviseur" {{$user->role=="superviseur" ? 'selected' : ''}}>superviseur</option>                       
-                            <option value="correcteur" {{$user->role=="correcteur" ? 'selected' : ''}}>correcteur</option>                        </select>
-                            
+                            <option value="utilisateur" {{$user->role=="utilisateur" ? 'selected' : ''}}>Utilisateur</option> 
+                           
                         </select>
                         </select>
                     </div>

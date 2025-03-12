@@ -100,4 +100,10 @@ class EmployeController extends Controller
         $this->employeRepository->destroy($id);
         return redirect('employe');
     }
+
+    public function getByService($service)
+    {
+        $employes = $this->employeRepository->getByService($service);
+        return response()->json($employes);
+    }
 }

@@ -9,6 +9,11 @@ class Entree extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'employe_id',"visiteur_id"
+        'employe_id',"visiteur_id","sortie"
+ 
     ];
+    public function sortie()
+    {
+        return $this->hasOne(Sortie::class);
+    }
 }

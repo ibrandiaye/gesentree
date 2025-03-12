@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 
-use App\Repositories\ServiceRepository;
+use App\Repositories\SiteRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,11 +15,11 @@ class UserController extends Controller
     protected $userRepository;
     protected $departementRepository;
     protected $arrondissementRepository;
-    protected $serviceRepository;
+    protected $siteRepository;
 
-    public function __construct(UserRepository $userRepository,ServiceRepository $serviceRepository){
+    public function __construct(UserRepository $userRepository,SiteRepository $siteRepository){
         $this->userRepository =$userRepository;
-        $this->serviceRepository = $serviceRepository;
+        $this->siteRepository = $siteRepository;
     }
 
     /**
@@ -40,8 +40,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $services = $this->serviceRepository->getAll();
-        return view('user.add',compact('services'));
+        $sites = $this->siteRepository->getAll();
+        return view('user.add',compact('sites'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends Controller
          
             'password' => Hash::make($request['password']),
             'role'=>$request['role'],
-            'service_id'=>$request['service_id']
+            'site_id'=>$request['site_id']
 
         ]);
         return redirect('user');
@@ -102,9 +102,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $services = $this->serviceRepository->getAll();
+        $sites = $this->siteRepository->getAll();
         $user = $this->userRepository->getById($id);
-        return view('user.edit',compact('user','services'));
+        return view('user.edit',compact('user','sites'));
     }
 
     /**

@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Service</label>
-                        <select class="form-control" name="service_id" id="service_id" >
+                        <label>Site</label>
+                        <select class="form-control" name="site_id" id="site_id" >
                             <option value="">Selectionnez</option>
-                            @foreach ($services as $service)
-                            <option value="{{$service->id}}">{{$service->nom}}</option>
+                            @foreach ($sites as $site)
+                            <option value="{{$site->id}}">{{$site->nom}}</option>
                                 @endforeach
 
                         </select>
@@ -74,11 +74,8 @@
                         <select class="form-control" name="role" required="">
                             <option value="">Selectionner</option>
                             <option value="admin">Admin</option>
-                            <option value="prefet">Prefet</option> 
-                            <option value="sous_prefet">Sous Prefet</option>
-                            <option value="gouverneur">gouverneur</option>
-                            <option value="superviseur">superviseur</option>
-                            <option value="correcteur">correcteur</option>
+                            <option value="utilisateur">Utilisateur</option> 
+                          
 
                         </select>
                     </div>
@@ -102,14 +99,14 @@
 @section("js")
 <script>
       url_app = '{{ config('app.url') }}';
-      $("#service_id").change(function () {
+      $("#site_id").change(function () {
         // alert("ibra");
-        var service_id =  $("#service_id").children("option:selected").val();
+        var site_id =  $("#site_id").children("option:selected").val();
        
             var departement = "<option value=''>Veuillez selectionner</option>";
             $.ajax({
                 type:'GET',
-                url:url_app+'/departement/by/service/'+service_id,
+                url:url_app+'/departement/by/site/'+site_id,
                 data:'_token = <?php echo csrf_token() ?>',
                 success:function(data) {
 

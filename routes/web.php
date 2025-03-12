@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\EntreeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisiteurController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
 
 //route user
 Route::resource('user', UserController::class)->middleware(['auth','admin']);
@@ -50,3 +52,14 @@ Route::get('/teste', function () {
 Route::get('/visiteur_add', function () {
     return view('visiteur.add');
 });
+Route::resource('visiteur', VisiteurController::class)->middleware(['auth']);
+
+//Entree
+Route::resource('entree', EntreeController::class)->middleware(['auth']);
+Route::get('/visiteur/by/site/{site}',[EntreeController::class,'getVisiteurBySite'])->name("visiteur.by.site")->middleware(['auth']);
+Route::get('/save/sortie/{id}',[EntreeController::class,'saveSortir'])->name("save.sortie")->middleware(['auth']);
+
+
+
+//employe
+Route::get('/employe/by/service/{service}',[EmployeController::class,'getByService'])->name("employe.by.service")->middleware(['auth']);

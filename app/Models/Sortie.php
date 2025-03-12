@@ -9,6 +9,7 @@ class Sortie extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sortie_id'
+        'entree_id'
     ];
+  
 }

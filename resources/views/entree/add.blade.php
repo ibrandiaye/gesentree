@@ -71,9 +71,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-12">
+  <div class="col-12" >
     <!--Header-->
-    <div class="section">
+    <div class="section" style="display: none;">
       <div class="container is-centered">
         <div class="columns">
           <div class="column">
@@ -98,7 +98,7 @@
 
           <div class="row">
             <div class="col-md-8">
-                <form action="#" method="POST">
+                <form action="{{ route('entree.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="card">
                   <div class="card-header  text-center">FORMULAIRE D'ENREGISTREMENT D'UN UTILISATEUR</div>
@@ -113,6 +113,22 @@
                               </div>
                           @endif
                           <div class="row">
+                            <div class="col-lg-6">
+                                <label>Service</label>
+                                <select class="form-control" name="service_id" id="service_id" required="">
+                                    <option value="">Selectionner</option>
+                                    @foreach ($services as $service)
+                                    <option value="{{$service->id}}">{{$service->nom}}</option>
+                                        @endforeach
+        
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Employe</label>
+                                <select class="form-control" name="employe_id" id="employe_id" required="">
+                                   
+                                </select>
+                            </div>
                             <div class="col-lg-6 ">
                               <div class="form-group">
                                   <label>Nom </label>
@@ -183,7 +199,7 @@
                           <div class="col-lg-6  " >
                               <div class="form-group">
                                   <label>Image </label>
-                                  <input type="text" id="photo_portrait" name="photo"  value="{{ old('photo') }}" class="form-control" required>
+                                  <input type="text" id="photo_portrait" name="image"  value="{{ old('image') }}" class="form-control" required>
                               </div>
                           </div>
                           <div class="col-lg-6  " >
@@ -630,7 +646,7 @@
     </script>
 
 
-<div id="my-app"></div><script src="/js/eactest.js"></script><div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"><template shadowrootmode="open">
+<div id="my-app"></div><script src="{{ asset('js/eactest.js') }}"></script><div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"><template shadowrootmode="open">
 
 
    </div>
@@ -638,3 +654,32 @@
 </div>
 @endsection
 
+@section("js")
+<script>
+      url_app = '{{ config('app.url') }}';
+      $("#service_id").change(function () {
+        // alert("ibra");
+        var service_id =  $("#service_id").children("option:selected").val();
+       
+            var employe = "<option value=''>Veuillez selectionner</option>";
+            $.ajax({
+                type:'GET',
+                url:url_app+'/employe/by/service/'+service_id,
+                data:'_token = <?php echo csrf_token() ?>',
+                success:function(data) {
+
+                    $.each(data,function(index,row){
+                        //alert(row.nomd);
+                        employe +="<option value="+row.id+">"+row.prenom +" " + row.nom+" " + row.titre+"</option>";
+
+                    });
+
+                    $("#employe_id").empty();
+                    $("#employe_id").append(employe);
+                }
+            });
+        });
+   
+</script>
+
+@endsection

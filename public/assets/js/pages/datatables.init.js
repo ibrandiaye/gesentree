@@ -1,1 +1,62 @@
-var handleDataTableButtons=function(){"use strict";0!==$("#datatable-buttons").length&&$("#datatable-buttons").DataTable({dom:"Bfrtip","ordering": false,buttons:[{extend:"copy",className:"btn-sm"},{extend:"csv",className:"btn-sm"},{extend:"excel",className:"btn-sm"},{extend:"pdf",className:"btn-sm"},{extend:"print",className:"btn-sm"}],responsive:!0})},TableManageButtons=function(){"use strict";return{init:function(){handleDataTableButtons()}}}();$(document).ready(function(){$("#datatable").dataTable(),$("#datatable-keytable").DataTable({keys:!0}),$("#datatable-responsive").DataTable(),$("#datatable-colvid").DataTable({dom:'C<"clear">lfrtip',colVis:{buttonText:"Change columns"}}),$("#datatable-scroller").DataTable({ajax:"../assets/data/scroller-demo.json",deferRender:!0,scrollY:380,scrollCollapse:!0,scroller:!0});$("#datatable-fixed-header").DataTable({fixedHeader:!0}),$("#datatable-fixed-col").DataTable({scrollY:"300px",scrollX:!0,scrollCollapse:!0,paging:!1,fixedColumns:{leftColumns:1,rightColumns:1}})}),TableManageButtons.init();
+/*DataTable Init*/
+
+"use strict";
+
+$(document).ready(function() {
+	$('#datable_1').DataTable({
+		responsive: true,
+		autoWidth: false,
+		language: { search: "",
+		searchPlaceholder: "Search",
+		sLengthMenu: "_MENU_items"
+
+		}
+	});
+    $('#datable_2').DataTable({
+		autoWidth: false,
+		lengthChange: false,
+		"bPaginate": false,
+		language: { search: "",searchPlaceholder: "Search" }
+	});
+
+	/*Export DataTable*/
+	$('#datable_3').DataTable( {
+		dom: 'Bfrtip',
+		responsive: false,
+        ordering:  false,
+		language: {  url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/fr-FR.json', },
+		"bPaginate": true,
+		"info":     false,
+		"bFilter":     true,
+		buttons: [
+			'copy', 'csv', 'excel', 'pdf', 'print'
+		],
+		"drawCallback": function () {
+			$('.dt-buttons > .btn').addClass('btn-outline-light btn-sm');
+		}
+	} );
+
+	var table = $('#datable_5').DataTable({
+		responsive: true,
+		language: {
+		search: "" ,
+		sLengthMenu: "_MENU_Items",
+		},
+		"bPaginate": false,
+		"info":     false,
+		"bFilter":     false,
+		});
+	$('#datable_5 tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
+} );

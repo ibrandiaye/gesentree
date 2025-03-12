@@ -170,7 +170,28 @@
                                     <li><a href="{{ route('employe.index') }}">Liste des Employe</a></li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="mdi mdi-account"></i>
+                                    <span> Utilisateur </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('user.create') }}">Ajouter Utilisateur</a></li>
+                                    <li><a href="{{ route('user.index') }}">Liste des Utilisateur</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="mdi mdi-account"></i>
+                                    <span> Entree </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route(name: 'entree.create') }}">Ajouter Entrée</a></li>
+                                    <li><a href="{{ route('entree.index') }}">Liste des Entrées</a></li>
+                                </ul>
+                            </li>
                         </ul>
 
                     </div>
@@ -322,6 +343,7 @@
 }
 
     </script>
+    
 
        <!-- Datatable plugin js -->
        <script src="{{ asset('assets/libs/datatables/jquery.dataTables.min.js') }}"></script>

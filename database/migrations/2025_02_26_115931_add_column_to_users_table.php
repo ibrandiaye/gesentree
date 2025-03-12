@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string("role");
-            $table->unsignedBigInteger("service_id")->nullable();
-            $table->foreign("service_id")
+            $table->unsignedBigInteger("site_id")->nullable();
+            $table->foreign("site_id")
             ->references("id")
-            ->on("services");
+            ->on("sites");
         });
     }
 
@@ -27,8 +27,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn("role");
-            $table->dropForeign("service_id");
-            $table->dropColumn("service_id")->nullable();
+            $table->dropForeign("site_id");
+            $table->dropColumn("site_id")->nullable();
 
         });
     }
