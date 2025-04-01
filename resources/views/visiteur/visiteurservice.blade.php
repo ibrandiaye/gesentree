@@ -58,18 +58,16 @@
                             <td><img src="{{ asset('uploads/'.$visiteur->photo) }}" alt="user" class="avatar-img-sm rounded-circle" style="height: 50px;"></td>
                             <td>{{ $visiteur->prenom }}</td>
                             <td>{{ $visiteur->nom ?? " " }}</td>
-                            <td>@if($visiteur->entree) {{ date('d-m-Y H:i', strtotime($visiteur->entree->created_at)) }} @endif</td>
+                            <td>@if($visiteur->entree) {{ date('d-m-Y H:i', strtotime($visiteur->entree)) }} @endif</td>
                             <td>
                                 @if($visiteur->entree)
-                                    @if($visiteur->entree->sortie)
-                                        {{ date('d-m-Y H:i', strtotime($visiteur->entree->sortie)) }}
-                                    @else
-                                    <a href="{{ route('save.sortie', ['id'=>$visiteur->entree->id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
-                                    @endif
+                                    @if($visiteur->sortie)
+                                        {{ date('d-m-Y H:i', strtotime($visiteur->sortie)) }}
+                                   @endif
                                 @endif
-                            <td>
+                            </td>
                                 
-
+                                <td>
                                 <a href="#" role="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal{{$visiteur->id}}"><i class="fas fa-eye"></i></a>
                                
                             </td>
@@ -102,13 +100,11 @@
                                                 <li class="list-group-item"><span><i class="ion ion-md-pin font-18 text-light-20 mr-10"></i><span> Commune:</span></span><span class="ml-5 text-dark">{{$visiteur->commune}}</span></li>
                                                 <li class="list-group-item"><span><i class="ion ion-md-calendar font-18 text-light-20 mr-10"></i><span> Sexe :</span></span><span class="ml-5 text-dark">{{$visiteur->sexe}}</span></li>
                                                 <li class="list-group-item"><span><i class="ion ion-md-briefcase font-18 text-light-20 mr-10"></i><span> Nationalité:</span></span><span class="ml-5 text-dark">{{$visiteur->nationalite}}</span></li>
-                                                <li class="list-group-item"><span><i class="ion ion-md-pin font-18 text-light-20 mr-10"></i><span> Date Entree:</span></span><span class="ml-5 text-dark">@if($visiteur->entree) {{ date('d-m-Y H:i', strtotime($visiteur->entree->created_at)) }} @endif</span></li>
+                                                <li class="list-group-item"><span><i class="ion ion-md-pin font-18 text-light-20 mr-10"></i><span> Date Entree:</span></span><span class="ml-5 text-dark">@if($visiteur->entree) {{ date('d-m-Y H:i', strtotime($visiteur->entree)) }} @endif</span></li>
                                                 <li class="list-group-item"><span><i class="ion ion-md-pin font-18 text-light-20 mr-10"></i><span> Date Sortie:</span></span><span class="ml-5 text-dark"> @if($visiteur->entree)
-                                                    @if($visiteur->entree->sortie)
-                                                        {{ date('d-m-Y H:i', strtotime($visiteur->entree->sortie)) }}
-                                                    @else
-                                                    <a href="{{ route('save.sortie', ['id'=>$visiteur->entree->id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
-                                                    @endif
+                                                    @if($visiteur->sortie)
+                                                        {{ date('d-m-Y H:i', strtotime($visiteur->sortie)) }}
+                                                  @endif
                                                 @endif</span></li>
                                                 
                                                 <li class="list-group-item"><span><i class="ion ion-md-calendar font-18 text-light-20 mr-10"></i><span> Parent :</span></span><span class="ml-5 text-dark">{{$visiteur->prenompere}};{{$visiteur->prenommere}};{{$visiteur->nommere}}</span></li>

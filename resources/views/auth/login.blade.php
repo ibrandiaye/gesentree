@@ -17,8 +17,23 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
 
 </head>
+<style>
 
-<body>
+    .background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("/assets/images/home.jpg"); /* Remplacez par le chemin de votre image */
+                background-size: cover;
+                background-position: center;
+              
+                z-index: -1; /* Pour que l'image soit derrière le contenu */
+            }
+    
+    </style>
+<body class="background">
 
     <div class="account-pages mt-5 mb-5">
         <div class="container">

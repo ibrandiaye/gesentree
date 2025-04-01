@@ -923,11 +923,17 @@ class Gui {
                     <td><div id="dg11EmrtdCustodyInfo">${result.data.fields.custodyInfo}</div></td>
                 </tr>
             </table>`;
-        document.getElementById('dg11EmrtdFields').innerHTML += newEntry;
-        document.getElementById('additionalPersonalDetails').style.display = 'block';
-        $("numcni_input").val("dfdf");
-       document.getElementById('numcni_input').value =result.data.fields.personalNumber;
-       document.getElementById('lieunaiss').value =result.data.fields.placeOfBirth;
+            document.getElementById('dg11EmrtdFields').innerHTML += newEntry;
+            document.getElementById('additionalPersonalDetails').style.display = 'block';
+            //$("numcni_input").val("dfdf");
+            document.getElementById('numcni_input').value =result.data.fields.personalNumber;
+            document.getElementById('lieunaiss').value =result.data.fields.placeOfBirth;
+            const chaine = result.data.fields.custodyInfo
+            const parties = chaine.split(';');
+
+            document.getElementById('prenompere').value = parties[0] || '';
+            document.getElementById('prenommere').value = parties[1] || '';
+            document.getElementById('nommere').value = parties[2] || '';
 
        
 

@@ -10,7 +10,8 @@ class Visiteur extends Model
     use HasFactory;
     protected $fillable = [
         'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
-        'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte'
+        'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte','prenompere','nommere','prenommere',
+        'commentaire'
     ];
 
     public function entree()

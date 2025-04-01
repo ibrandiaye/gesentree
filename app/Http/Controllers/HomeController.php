@@ -39,7 +39,43 @@ class HomeController extends Controller
         $nbService = $this->serviceRepository->nbService();
         $nbEmploye = $this->employeRepository->nbEmploye();
         //dd($nbEmploye);
+        $visiteurs = $this->visiteurRepository->VisiteurTodayInService();
         return view('home',compact("nbEntreeJour","nbEntreeMois","nbEntreeAnnee","nbEntreeAnnee",
-    "nbService","nbEmploye"));
+    "nbService","nbEmploye","visiteurs"));
+    }
+
+    public function serviceParVisiteur($periode)
+    {
+      
+        if($periode==1)
+        {
+            $services = $this->visiteurRepository->nbVisiteurTodayGroupByService();
+        }
+        if($periode==2)
+        {
+            $services = $this->visiteurRepository->nbVisiteurMonthGroupByService();
+        }
+        if($periode==3)
+        {
+            $services = $this->visiteurRepository->nbVisiteurYearGroupByService();
+        }
+        return view('visiteur.nbbyservice',compact("services","periode"));
+    }
+    public function visiteurParPeriode($periode)
+    {
+      
+        if($periode==1)
+        {
+            $visiteurs = $this->visiteurRepository->visiteurToday();
+        }
+        if($periode==2)
+        {
+            $visiteurs = $this->visiteurRepository->visiteurMonth();
+        }
+        if($periode==3)
+        {
+            $visiteurs = $this->visiteurRepository->visiteurYear();
+        }
+        return view('visiteur.visiteurservice',compact("visiteurs","periode"));
     }
 }

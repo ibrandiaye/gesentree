@@ -155,65 +155,87 @@
                               </div>
                           </div>
                           <div class="col-lg-6  ">
+                            <div class="form-group">
+                                <label>Sexe </label>
+                                <input type="text" name="sexe" id="sex_input"  value="{{ old('sexe') }}" class="form-control"required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6  ">
+                          <div class="form-group">
+                              <label>Numero CNI </label>
+                              <input type="text" name="numcni" id="numcni_input"  value="{{ old('numcni') }}" class="form-control"required>
+                          </div>
+                      </div>
+                          <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Date D'expiration </label>
                                   <input type="text" id="doe_input" name="date_expiration"  value="{{ old('date_expiration') }}" class="form-control"required>
                               </div>
                           </div>
-                          <div class="col-lg-6  ">
+                         
+                          <div style="display: none;">
+                            <div class="col-lg-6  ">
                               <div class="form-group">
-                                  <label>Date D'emission </label>
-                                  <input type="text" id="date_emission" name="date_emission"  value="{{ old('date_emission') }}" class="form-control"required>
-                              </div>
-                          </div>
-                          <div class="col-lg-6  ">
-                              <div class="form-group">
-                                  <label>Sexe </label>
-                                  <input type="text" name="sexe" id="sex_input"  value="{{ old('sexe') }}" class="form-control"required>
+                                  <label>Nom Pere </label>
+                                  <input type="text" id="prenompere" name="prenompere"  value="{{ old('prenompere') }}" class="form-control">
                               </div>
                           </div>
                           <div class="col-lg-6  ">
                             <div class="form-group">
-                                <label>Numero CNI </label>
-                                <input type="text" name="numcni" id="numcni_input"  value="{{ old('numcni') }}" class="form-control"required>
+                                <label>Nom Mere </label>
+                                <input type="text" id="nommere" name="nommere"  value="{{ old('nommere') }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6  ">
                           <div class="form-group">
-                              <label>Numéro Electeur </label>
-                              <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control"required>
+                              <label>Prenom Mere </label>
+                              <input type="text" id="prenommere" name="prenommere"  value="{{ old('prenommere') }}" class="form-control">
                           </div>
                       </div>
-                      <div class="col-lg-6  ">
-                          <div class="form-group">
-                              <label>Numéro Carte </label>
-                              <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
+                            <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Date D'emission </label>
+                                  <input type="text" id="date_emission" name="date_emission"  value="{{ old('date_emission') }}" class="form-control">
+                              </div>
                           </div>
-                      </div>
-                      <div class="col-lg-6  ">
-                        <div class="form-group">
-                            <label>Commune </label>
-                            <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
+                            <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Numéro Electeur </label>
+                                  <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                              <div class="form-group">
+                                  <label>Numéro Carte </label>
+                                  <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
+                              </div>
+                          </div>
+                          <div class="col-lg-6  ">
+                            <div class="form-group">
+                                <label>Commune </label>
+                                <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
+                            </div>
                         </div>
-                    </div>
-                          <div class="col-lg-6  " >
-                              <div class="form-group">
-                                  <label>Image </label>
-                                  <input type="text" id="photo_portrait" name="image"  value="{{ old('image') }}" class="form-control" required>
+                              <div class="col-lg-6  " >
+                                  <div class="form-group">
+                                      <label>Image </label>
+                                      <input type="text" id="photo_portrait" name="image"  value="{{ old('image') }}" class="form-control" required>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6  " >
+                                  <div class="form-group">
+                                      <label>Mrz </label>
+                                      <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6  " >
+                                  <div class="form-group">
+                                      <label>Nationalite </label>
+                                      <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" >
+                                  </div>
                               </div>
                           </div>
-                          <div class="col-lg-6  " >
-                              <div class="form-group">
-                                  <label>Mrz </label>
-                                  <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
-                              </div>
-                          </div>
-                          <div class="col-lg-6  " >
-                              <div class="form-group">
-                                  <label>Nationalite </label>
-                                  <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" required>
-                              </div>
-                          </div>
+                        
                           </div>
   
                           <div>
@@ -257,6 +279,7 @@
                   </div>
                 </div>
               </div>
+              <img id="portraitDisplay" width="0" height="0">
             </div>
           </div>
           <!--Global columns-->
@@ -268,7 +291,7 @@
             <div class="columns">
               <div class="column is-3">
                 <!--Portrait-->
-                <img id="portraitDisplay" width="0" height="0">
+                {{-- <img id="portraitDisplay" width="0" height="0"> --}}
                 <!--Signature-->
                 <img id="signatureDisplay" width="0" height="0">
               </div>

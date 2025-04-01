@@ -19,9 +19,9 @@ class EmployeRepository extends RessourceRepository{
         $this->model =$employe;
     }
 
-    public function getByEmploye($employe)
+    public function getByService($service)
     {
-        return DB::table("employes")->where("employe_id",$employe)->get();
+        return DB::table("employes")->where("service_id",$service)->get();
     }
     public function nbEmploye()
     {

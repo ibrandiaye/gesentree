@@ -137,6 +137,7 @@
                                 </a>
                               
                             </li>
+                            @if ($user->role=="admin")
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect waves-light">
                                     <i class="mdi mdi-google-pages"></i>
@@ -181,6 +182,8 @@
                                     <li><a href="{{ route('user.index') }}">Liste des Utilisateur</a></li>
                                 </ul>
                             </li>
+                            @endif
+                           
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect waves-light">
                                     <i class="mdi mdi-account"></i>

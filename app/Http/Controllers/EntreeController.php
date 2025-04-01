@@ -55,7 +55,10 @@ class EntreeController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $services = $this->serviceRepository->getBySite($user->site_id);
+        if($user->role=="admin")
+            $services = $this->serviceRepository->getAll();
+        else
+            $services = $this->serviceRepository->getBySite($user->site_id);
         $employes = $this->employeRepository->getAll();
         return view('entree.add',compact('employes','services','employes'));
     }
@@ -68,6 +71,8 @@ class EntreeController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->service_id);
+
         $user = Auth::user();
         $base64Image = $request->input('image'); // Récupérer l'image encodée
         $fileName = '';
@@ -83,14 +88,43 @@ class EntreeController extends Controller
             // Enregistrer l'image dans public/uploads/
             file_put_contents($filePath, $base64Image);
 
-        } 
-        $request->merge(["site_id"=>$user->site_id,'photo'=>$fileName]);
+        }
+        if($user->role=="admin") 
+        {
+            $service = $this->serviceRepository->getById($request->service_id);
+            $request->merge(["site_id"=>$service->site_id,'photo'=>$fileName]);
 
-       $visiteur =  $this->visiteurRepository->store($request->only([ 'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
-        'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte']));
+        }
+        else
+        {
+            $request->merge(["site_id"=>$user->site_id,'photo'=>$fileName]);
+
+        }
+        $chercher = DB::table("recherchers")
+        ->where([['nom',$request->nom],['prenom',$request->prenom],['datenaiss',$request->datenaiss]])
+        ->orwhere([['nom',$request->nom],['prenom',$request->prenom],['prenompere',$request->prenompere]])
+        ->orwhere([['nom',$request->nom],['prenom',$request->prenom],['nommere',$request->nommere],['prenommere',$request->prenommere]])
+        ->first();
+        $message = null;
+        if($chercher)
+        {
+            $request->merge(["commentaire"=>$chercher->motif]);
+            $visiteur =  $this->visiteurRepository->store($request->only([ 'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
+            'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte','prenompere','nommere','prenommere','commentaire']));
+            $message = " Attention Personne Rechercher pour motif : ".$chercher->motif;
+        }
+        else
+        {
+            $visiteur =  $this->visiteurRepository->store($request->only([ 'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
+            'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte','prenompere','nommere','prenommere']));
+        }
+      
         $request->merge(["visiteur_id"=>$visiteur->id]);
         $entrees = $this->entreeRepository->store($request->all());
-        return redirect('visiteur/by/site/'.$user->site_id);
+        if($chercher)
+            return redirect('visiteur/by/site/'.$request->site_id)->with("message",$message);
+        else
+        return redirect('visiteur/by/site/'.$request->site_id)->with("success","Enregistrement avec succée");
 
     }
 
@@ -147,7 +181,15 @@ class EntreeController extends Controller
     public function getVisiteurBySite($site)
     {
         $user = Auth::user();
-        $visiteurs = $this->visiteurRepository->getBySite($user->site_id);
+        if($user->role=="admin")
+        {
+            $visiteurs = $this->visiteurRepository->get();
+        }
+        else
+        {
+            $visiteurs = $this->visiteurRepository->getBySite($user->site_id);
+
+        }
         return view("entree.index",compact("visiteurs"));
     }
 

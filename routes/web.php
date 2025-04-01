@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\EntreeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -63,3 +64,8 @@ Route::get('/save/sortie/{id}',[EntreeController::class,'saveSortir'])->name("sa
 
 //employe
 Route::get('/employe/by/service/{service}',[EmployeController::class,'getByService'])->name("employe.by.service")->middleware(['auth']);
+
+Route::get('/nbemploye/by/service/{periode}',[HomeController::class,'serviceParVisiteur'])->name("nbvisiteur.par.service")->middleware(['auth']);
+
+
+Route::get('/visiteur/par/service/{periode}',[HomeController::class,'visiteurParPeriode'])->name("visiteur.par.periode")->middleware(['auth']);
