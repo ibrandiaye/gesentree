@@ -25,7 +25,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-image: url("/assets/images/home.jpg"); /* Remplacez par le chemin de votre image */
+                background-image: url("/gesentree/assets/images/home.jpg"); /* Remplacez par le chemin de votre image */
                 background-size: cover;
                 background-position: center;
               
