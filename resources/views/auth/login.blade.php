@@ -44,7 +44,7 @@
                         <div class="text-center account-logo-box" style="background-color: white;">
                             <div class="mt-2 mb-2">
                                 <a href="index.html" class="text-success">
-                                    <span>                        <img src="{{ asset('logo/logo.png') }}" alt="" height="150">
+                                    <span>                        <img src="{{ asset('/logo/logo.png') }}" alt="" height="150">
                                     </span>
                                 </a>
                             </div>
