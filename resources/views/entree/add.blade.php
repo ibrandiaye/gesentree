@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Employe</label>
-                                <select class="form-control" name="employe_id" id="employe_id" required="">
+                                <select class="form-control" name="employe_id" id="employe_id" >
                                    
                                 </select>
                             </div>
