@@ -131,6 +131,8 @@
                                 @if($visiteur->entree)
                                     @if($visiteur->sortie)
                                         {{ date('d-m-Y H:i', strtotime($visiteur->sortie)) }}
+                                    @else
+                                        <a href="{{ route('save.sortie', ['id'=>$visiteur->entree_id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
                                    @endif
                                 @endif
                             </td>
