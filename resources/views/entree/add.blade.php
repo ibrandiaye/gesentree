@@ -173,7 +173,7 @@
                               </div>
                           </div>
                          
-                     {{--      <div style="display: none;">
+                          <div style="display: none;">
                             <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Nom Pere </label>
@@ -201,31 +201,31 @@
                             <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Numéro Electeur </label>
-                                  <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control"required>
+                                  <input type="text" name="numelec" id="numelec_input"  value="{{ old('numelec') }}" class="form-control">
                               </div>
                           </div>
                           <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Numéro Carte </label>
-                                  <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control"required>
+                                  <input type="text" name="numcarte" id="docNumber_input"  value="{{ old('numcarte') }}" class="form-control">
                               </div>
                           </div>
                           <div class="col-lg-6  ">
                             <div class="form-group">
                                 <label>Commune </label>
-                                <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control"required>
+                                <input type="text" name="commune" id="commune_input"  value="{{ old('commune') }}" class="form-control">
                             </div>
                         </div>
                               <div class="col-lg-6  " >
                                   <div class="form-group">
                                       <label>Image </label>
-                                      <input type="text" id="photo_portrait" name="image"  value="{{ old('image') }}" class="form-control" required>
+                                      <input type="text" id="photo_portrait" name="image"  value="{{ old('image') }}" class="form-control" >
                                   </div>
                               </div>
                               <div class="col-lg-6  " >
                                   <div class="form-group">
                                       <label>Mrz </label>
-                                      <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" required>
+                                      <input type="text" id="mrz" name="mrz"  value="{{ old('mrz') }}" class="form-control" >
                                   </div>
                               </div>
                               <div class="col-lg-6  " >
@@ -234,7 +234,7 @@
                                       <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" >
                                   </div>
                               </div>
-                          </div> --}}
+                          </div>
                         
                           </div>
   
