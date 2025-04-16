@@ -173,7 +173,7 @@
                               </div>
                           </div>
                          
-                          <div style="display: none;">
+                     {{--      <div style="display: none;">
                             <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Nom Pere </label>
@@ -234,7 +234,7 @@
                                       <input type="text" id="nationalite" name="nationalite"  value="{{ old('nationalite') }}" class="form-control" >
                                   </div>
                               </div>
-                          </div>
+                          </div> --}}
                         
                           </div>
   
