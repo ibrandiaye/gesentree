@@ -39,7 +39,7 @@
         <div class="card ">
             <div class="card-header">LISTE D'ENREGISTREMENT DES Entrees</div>
             <div class="card-body">
-               
+
                 <table  id="datable_3" class="table table-bordered table-responsive-md table-striped text-center datatable-buttons">
                     <thead>
                         <tr>
@@ -68,17 +68,18 @@
                                     @endif
                                 @endif
                             <td>
-                                
+
 
                                 <a href="#" role="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal{{$visiteur->id}}"><i class="fas fa-eye"></i></a>
-                               
+                                <a href="{{ route('historique', ['cni'=>$visiteur->numcni]) }}" role="button" class="btn btn-info"  ><i class="fas fa-calendar"></i></a>
+
                             </td>
 
                         </tr>
                         <div class="modal fade" id="exampleModal{{$visiteur->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                  
+
                                     <div class="modal-body">
                                         <div class="card card-profile-feed">
                                             <div class="card-header card-header-action" style="padding: 0px; height: 90px;">
@@ -94,7 +95,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item"><span><i style="margin-left: 0px;" class="ion ion-md-calendar font-18 text-light-20   mr-10"></i><span> Date Naissance:</span></span><span class="ml-5 text-dark">{{$visiteur->datenaiss}}</span></li>
                                                 <li class="list-group-item"><span><i class="ion ion-md-briefcase font-18 text-light-20 mr-10" style="margin-left: 0px;" ></i><span> Lieu de Naissance:</span></span><span class="ml-5 text-dark">{{$visiteur->lieunaiss}}</span></li>
@@ -110,10 +111,10 @@
                                                     <a href="{{ route('save.sortie', ['id'=>$visiteur->entree->id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
                                                     @endif
                                                 @endif</span></li>
-                                                
+
                                                 <li class="list-group-item"><span><i class="ion ion-md-calendar font-18 text-light-20 mr-10"></i><span> Parent :</span></span><span class="ml-5 text-dark">{{$visiteur->prenompere}};{{$visiteur->prenommere}};{{$visiteur->nommere}}</span></li>
                                                 @if ($visiteur->commentaire)
-                                                
+
                                                <li class="list-group-item"><span><i class="ion ion-md-calendar font-18 text-light-20 mr-10"></i><span> Commentaire :</span></span><span class="ml-5 text-danger">{{$visiteur->commentaire}}</span></li>
                                                @endif
                                             </ul>

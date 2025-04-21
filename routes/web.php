@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarteController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\EntreeController;
 use App\Http\Controllers\HomeController;
@@ -70,3 +71,10 @@ Route::get('/nbemploye/by/service/{periode}',[HomeController::class,'serviceParV
 
 
 Route::get('/visiteur/par/service/{periode}',[HomeController::class,'visiteurParPeriode'])->name("visiteur.par.periode")->middleware(['auth']);
+
+Route::get('/historique/{cni}',[VisiteurController::class,'historique'])->name("historique")->middleware(['auth']);
+
+
+//Carte
+Route::resource('carte', CarteController::class)->middleware(['auth']);
+Route::get('/electeur/by/cni/{cni}',[CarteController::class,'getByCni'])->middleware(['auth']);

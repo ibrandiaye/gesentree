@@ -100,4 +100,12 @@ class VisiteurController extends Controller
         $this->visiteurRepository->destroy($id);
         return redirect('visiteur');
     }
+
+    public function historique($cni)
+    {
+        $entrees = $this->visiteurRepository->historique($cni);
+        $visiteur = $this->visiteurRepository->getByCni($cni);
+        return view("visiteur.historique",compact("visiteur","entrees"));
+    }
+
 }

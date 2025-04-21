@@ -49,7 +49,7 @@
     <!-- <script src="js/misc/require.js"></script> -->
     <link rel="manifest" href="https://www.elyctis.com/demo/elytraveldoc/ver/rc8.6/sen-cni/manifest.json">
 
-   
+
 
 
 
@@ -120,13 +120,13 @@
                                     @foreach ($services as $service)
                                     <option value="{{$service->id}}">{{$service->nom}}</option>
                                         @endforeach
-        
+
                                 </select>
                             </div>
                             <div class="col-lg-6">
                                 <label>Employe</label>
                                 <select class="form-control" name="employe_id" id="employe_id" >
-                                   
+
                                 </select>
                             </div>
                             <div class="col-lg-6 ">
@@ -147,7 +147,7 @@
                                   <input type="text" id="dob_input" name="datenaiss"  value="{{ old('datenaiss') }}" class="form-control"required>
                               </div>
                           </div>
-  
+
                           <div class="col-lg-6  ">
                               <div class="form-group">
                                   <label>Lieu de Naissance </label>
@@ -164,6 +164,9 @@
                           <div class="form-group">
                               <label>Numero CNI </label>
                               <input type="text" name="numcni" id="numcni_input"  value="{{ old('numcni') }}" class="form-control"required>
+                              <span class="input-group-append">
+                                <button type="button" id="btnnumelec" class="btn  btn-primary"><i class="fa fa-search"></i> Rechercher</button>
+                                </span>
                           </div>
                       </div>
                           <div class="col-lg-6  ">
@@ -172,7 +175,7 @@
                                   <input type="text" id="doe_input" name="date_expiration"  value="{{ old('date_expiration') }}" class="form-control"required>
                               </div>
                           </div>
-                         
+
                           <div style="display: none;">
                             <div class="col-lg-6  ">
                               <div class="form-group">
@@ -235,9 +238,9 @@
                                   </div>
                               </div>
                           </div>
-                        
+
                           </div>
-  
+
                           <div>
                               <br>
                               <center>
@@ -245,9 +248,9 @@
                               </center>
                           </div>
                       </div>
-  
+
                   </div>
-  
+
               </form>
             </div>
             <div class="col-md-4">
@@ -283,7 +286,8 @@
             </div>
           </div>
           <!--Global columns-->
-          
+
+
 
           <!--Document details-->
           <div class="box has-background-light">
@@ -680,10 +684,11 @@
 @section("js")
 <script>
       url_app = '{{ config('app.url') }}';
+      url_api = '{{ config('app.url_api') }}';
       $("#service_id").change(function () {
         // alert("ibra");
         var service_id =  $("#service_id").children("option:selected").val();
-       
+
             var employe = "<option value=''>Veuillez selectionner</option>";
             $.ajax({
                 type:'GET',
@@ -702,7 +707,45 @@
                 }
             });
         });
-   
+
+        $("#btnnumelec").click(function () {
+            numcni_input =  $("#numcni_input").val();
+            //alert(numcni_input);
+           $("#electeur_id").val('');
+            contenu = '';
+            $.ajax({
+                type:'GET',
+                url:url_app+'/electeur/by/cni/'+numcni_input,
+                data:'_token = <?php echo csrf_token() ?>',
+                success:function(data) {
+                    console.log(data)
+
+                        /*contenu = "Province : <strong>"+data.province+"</strong><br>"+
+                        "Commune ou Departement : <strong> "+data.commoudept+"</strong><br>"+
+                        "Arrondissement : <strong>"+data.arrondissement +"</strong><br>"+
+                        "Siege : <strong>"+data.siege+"</strong><br>"+
+                        "Centre de vote : <strong>"+data.centrevote +"</strong><br>";*/
+                        //$("#electeur_id").val(data.id);
+                        $("#surName_input").val(data.nom);
+                        $("#firstName_input").val(data.prenom);
+                        $("#dob_input").val(data.datenaiss);
+                        $("#lieunaiss").val(data.lieunaiss);
+                        $("#sex_input").val(data.sexe);
+                        $("#doe_input").val(data.date_expiration);
+
+                       /*
+                        $("#lieunaiss").val(data.lieu_naiss);
+                        $("#lieunaiss").val(data.lieu_naiss);
+                        $("#commoudept_id").val(data.commoudept_id);
+                        $("#arrondissement_id").val(data.arrondissement_id);
+                        $("#province_id").val(data.province_id);
+                        //console.log(contenu);
+                        $("#ancienne").html(contenu);*/
+                    }
+                });
+
+            });
+
 </script>
 
 @endsection

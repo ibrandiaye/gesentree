@@ -197,7 +197,7 @@ class VisiteurRepository extends RessourceRepository{
     public function visiteurMonth()
     {
         $moisEnCours = \Carbon\Carbon::now()->month;
-        $anneeEnCours = \Carbon\Carbon::now()->year;        
+        $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
         if($user->role=="admin")
         {
@@ -230,7 +230,7 @@ class VisiteurRepository extends RessourceRepository{
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
             ->join("entrees","visiteurs.id","=","entrees.visiteur_id")
-            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")            
+            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")
             ->whereYear('visiteurs.created_at', $anneeEnCours)
             ->get();
         }
@@ -257,8 +257,8 @@ class VisiteurRepository extends RessourceRepository{
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
             ->join("entrees","visiteurs.id","=","entrees.visiteur_id")
-            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id") 
-            ->whereNull("entrees.sortie")          
+            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")
+            ->whereNull("entrees.sortie")
              ->whereDate('visiteurs.created_at', $aujourdhui)
             ->get();
         }
@@ -267,15 +267,31 @@ class VisiteurRepository extends RessourceRepository{
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
             ->join("entrees","visiteurs.id","=","entrees.visiteur_id")
-            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")           
+            ->select("services.nom as service","visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")
              ->whereDate('visiteurs.created_at', $aujourdhui)
-             ->whereNull("entrees.sortie")          
+             ->whereNull("entrees.sortie")
             ->where("visiteurs.site_id",$user->site_id)
             ->get();
 
         }
 
     }
+    public function historique($cni)
+    {
+        return DB::table("entrees")
+        ->join("visiteurs",'entrees.visiteur_id','=','visiteurs.id')
+        ->join("services",'entrees.service_id','=','services.id')
+
+        ->select("entrees.*","services.nom as service")
+        ->where("visiteurs.numcni",$cni)
+        ->get();
+    }
+
+    public function getByCni($cni)
+    {
+        return DB::table("visiteurs")->where("numcni",$cni)->first();
+    }
+
 
 
 }
