@@ -115,7 +115,7 @@
                           <div class="row">
                             <div class="col-lg-6">
                                 <label>Service</label>
-                                <select class="form-control" name="service_id" id="service_id" required="">
+                                <select class="form-control" name="service_id" id="" required="">
                                     <option value="">Selectionner</option>
                                     @foreach ($services as $service)
                                     <option value="{{$service->id}}">{{$service->nom}}</option>
@@ -123,12 +123,12 @@
 
                                 </select>
                             </div>
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <label>Employe</label>
                                 <select class="form-control" name="employe_id" id="employe_id" >
 
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-6 ">
                               <div class="form-group">
                                   <label>Nom </label>
