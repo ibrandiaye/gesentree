@@ -67,11 +67,17 @@
                                     <a href="{{ route('save.sortie', ['id'=>$visiteur->entree->id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
                                     @endif
                                 @endif
+
                             <td>
 
 
                                 <a href="#" role="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal{{$visiteur->id}}"><i class="fas fa-eye"></i></a>
                                 <a href="{{ route('historique', ['cni'=>$visiteur->numcni]) }}" role="button" class="btn btn-info"  ><i class="fas fa-calendar"></i></a>
+                                @if(Auth::user()->role=='admin')
+                                    {!! Form::open(['method' => 'DELETE', 'route'=>['visiteur.destroy', $visiteur->id], 'style'=> 'display:inline', 'onclick'=>"if(!confirm('Êtes-vous sûr de vouloir supprimer cet enregistrement ?')) { return false; }"]) !!}
+                                    <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    {!! Form::close() !!}
+                                @endif
 
                             </td>
 

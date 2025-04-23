@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\EntreeRepository;
 use App\Repositories\ServiceRepository;
 use App\Repositories\VisiteurRepository;
 use Illuminate\Http\Request;
@@ -11,9 +12,13 @@ class VisiteurController extends Controller
     protected $visiteurRepository;
     protected $serviceRepository;
 
-    public function __construct(VisiteurRepository $visiteurRepository, ServiceRepository $serviceRepository){
+    protected $entreeRepository;
+
+    public function __construct(VisiteurRepository $visiteurRepository, ServiceRepository $serviceRepository,
+    EntreeRepository $entreeRepository){
         $this->visiteurRepository =$visiteurRepository;
         $this->serviceRepository = $serviceRepository;
+        $this->entreeRepository = $entreeRepository;
     }
 
     /**
@@ -97,8 +102,9 @@ class VisiteurController extends Controller
      */
     public function destroy($id)
     {
+        $this->entreeRepository->deleteByVisiteur($id);
         $this->visiteurRepository->destroy($id);
-        return redirect('visiteur');
+        return redirect('entree')->with("success","Suppression réussi");
     }
 
     public function historique($cni)

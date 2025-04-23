@@ -19,5 +19,9 @@ class EntreeRepository extends RessourceRepository{
         $this->model =$entree;
     }
 
-   
+    public function deleteByVisiteur($visiteur_id)
+    {
+        return DB::table("entrees")->where("visiteur_id",$visiteur_id)->delete();
+    }
+
 }
