@@ -86,7 +86,7 @@
           </label>
 
           <label class="block">
-            <span class="block font-medium">7. Statut de l’opposition et de son chef</span>
+            <span class="block font-medium">7.Renforcement  Statut de l’opposition et de son chef</span>
             <select name="statut_opposition" class="w-full border p-2 rounded">
               <option>Oui</option>
               <option>Non</option>
@@ -101,7 +101,7 @@
         <h2 class="text-xl font-semibold mb-4">Axe 2 : Processus électoral</h2>
         <div class="space-y-4">
           <label class="block">
-            <span class="block font-medium">8. Inscription automatique via carte CEDEAO</span>
+            <span class="block font-medium">8. Inscription automatique via carte biométrique  CEDEAO</span>
             <select name="inscription_auto" class="w-full border p-2 rounded">
               <option>Oui</option>
               <option>Non</option>
@@ -109,7 +109,7 @@
           </label>
 
           <label class="block">
-            <span class="block font-medium">9. Bulletin unique</span>
+            <span class="block font-medium">9. Utilisation du bulletin unique</span>
             <select name="bulletin_unique" class="w-full border p-2 rounded">
               <option>Oui</option>
               <option>Non</option>
@@ -118,7 +118,7 @@
           </label>
 
           <label class="block">
-            <span class="block font-medium">10. Organisation du parrainage</span>
+            <span class="block font-medium">10. Modalité  organisation du parrainage</span>
             <select name="modalites_parrainage" class="w-full border p-2 rounded">
               <option>À maintenir</option>
               <option>À moderniser ou digitaliser</option>
@@ -151,7 +151,7 @@
         <h2 class="text-xl font-semibold mb-4">Axe 3 : Réformes institutionnelles</h2>
         <div class="space-y-4">
           <label class="block">
-            <span class="block font-medium">13. CENA vs CENI indépendante</span>
+            <span class="block font-medium">13. Remplacement de la CENA par une CENI indépendante</span>
             <select name="ceni" class="w-full border p-2 rounded">
               <option>Oui</option>
               <option>Non</option>
@@ -168,7 +168,7 @@
           </label>
 
           <label class="block">
-            <span class="block font-medium">15. Rôle des médias</span>
+            <span class="block font-medium">15. Rôle des médias dans le processus électoral</span>
             <select name="medias" class="w-full border p-2 rounded">
               <option>Impartial et constructif</option>
               <option>Parfois biaisé</option>
