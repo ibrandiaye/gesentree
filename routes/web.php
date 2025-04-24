@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
+Route::get('/dialogue', function () {
+    return view('dialogue');
+});
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
