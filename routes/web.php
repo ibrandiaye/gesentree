@@ -73,7 +73,7 @@ Route::get('/employe/by/service/{service}',[EmployeController::class,'getByServi
 Route::get('/nbemploye/by/service/{periode}',[HomeController::class,'serviceParVisiteur'])->name("nbvisiteur.par.service")->middleware(['auth']);
 
 
-Route::get('/visiteur/par/service/{periode}',[HomeController::class,'visiteurParPeriode'])->name("visiteur.par.periode")->middleware(['auth']);
+Route::get('/visiteur/par/service/{periode}/{service}',[HomeController::class,'visiteurParPeriode'])->name("visiteur.par.periode")->middleware(['auth']);
 
 Route::get('/historique/{cni}',[VisiteurController::class,'historique'])->name("historique")->middleware(['auth']);
 

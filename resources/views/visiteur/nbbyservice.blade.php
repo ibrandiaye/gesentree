@@ -34,11 +34,11 @@
         <div class="card ">
             <div class="card-header"> Nombre de Visiteurs Par service</div>
             <div class="card-body">
-               
+
                 <table  id="datatable-buttons" class="table table-bordered table-responsive-md table-striped text-center datatable-buttons">
                     <thead>
                         <tr>
-                            
+
                             <th>Site</th>
                             <th>Nombre</th>
                             <th>Actions</th>
@@ -55,7 +55,7 @@
                                 <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                 {!! Form::close() !!} --}}
 
-                                <a href="{{ route('visiteur.par.periode', $periode) }}" role="button" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                <a href="{{ route('visiteur.par.periode', ['periode'=>$periode,'service'=>$service->id]) }}" role="button" class="btn btn-primary"><i class="fas fa-eye"></i></a>
 
                             </td>
 

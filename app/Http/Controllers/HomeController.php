@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function serviceParVisiteur($periode)
     {
-      
+
         if($periode==1)
         {
             $services = $this->visiteurRepository->nbVisiteurTodayGroupByService();
@@ -61,20 +61,20 @@ class HomeController extends Controller
         }
         return view('visiteur.nbbyservice',compact("services","periode"));
     }
-    public function visiteurParPeriode($periode)
+    public function visiteurParPeriode($periode,$service)
     {
-      
+
         if($periode==1)
         {
-            $visiteurs = $this->visiteurRepository->visiteurToday();
+            $visiteurs = $this->visiteurRepository->VisiteurTodayByService($service);
         }
         if($periode==2)
         {
-            $visiteurs = $this->visiteurRepository->visiteurMonth();
+            $visiteurs = $this->visiteurRepository->visiteurMonthByService($service);
         }
         if($periode==3)
         {
-            $visiteurs = $this->visiteurRepository->visiteurYear();
+            $visiteurs = $this->visiteurRepository->visiteurYearByService($service);
         }
         return view('visiteur.visiteurservice',compact("visiteurs","periode"));
     }
