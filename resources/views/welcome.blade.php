@@ -183,6 +183,7 @@
                                 </ul>
                             </li>
                             @endif
+                            @if ($user->role=="admin" ||  ($user->role=="utilisateur"))
 
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect waves-light">
@@ -195,6 +196,7 @@
                                     <li><a href="{{ route('entree.index') }}">Liste des Entrées</a></li>
                                 </ul>
                             </li>
+                            @endif
                         </ul>
 
                     </div>

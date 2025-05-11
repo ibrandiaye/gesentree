@@ -34,7 +34,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $aujourdhui = \Carbon\Carbon::today();
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")->whereDate('created_at', $aujourdhui)->count();
         }
@@ -52,7 +52,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $moisEnCours = \Carbon\Carbon::now()->month;
         $anneeEnCours = \Carbon\Carbon::now()->year;        $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")->whereMonth('created_at', $moisEnCours)
            ->whereYear('created_at', $anneeEnCours)
@@ -73,7 +73,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")->whereYear('created_at', $anneeEnCours)->count();
         }
@@ -93,7 +93,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $aujourdhui = \Carbon\Carbon::today();
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -119,7 +119,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $moisEnCours = \Carbon\Carbon::now()->month;
         $anneeEnCours = \Carbon\Carbon::now()->year;        $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -147,7 +147,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -174,7 +174,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $aujourdhui = \Carbon\Carbon::today();
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -199,7 +199,7 @@ class VisiteurRepository extends RessourceRepository{
         $moisEnCours = \Carbon\Carbon::now()->month;
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -225,7 +225,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -252,7 +252,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $aujourdhui = \Carbon\Carbon::today();
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -299,7 +299,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $aujourdhui = \Carbon\Carbon::today();
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -328,7 +328,7 @@ class VisiteurRepository extends RessourceRepository{
         $moisEnCours = \Carbon\Carbon::now()->month;
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -356,7 +356,7 @@ class VisiteurRepository extends RessourceRepository{
     {
         $anneeEnCours = \Carbon\Carbon::now()->year;
         $user = Auth::user();
-        if($user->role=="admin")
+        if($user->role=="admin" || $user->role=="visiteur")
         {
             return DB::table("visiteurs")
             ->join("services","visiteurs.service_id","=","services.id")
@@ -380,5 +380,33 @@ class VisiteurRepository extends RessourceRepository{
         }
 
     }
+
+    public function verifierVisiteur($cni)
+    {
+        $user = Auth::user();
+        if($user->role=="admin" || $user->role=="visiteur")
+        {
+            return DB::table("visiteurs")
+            ->join("entrees","visiteurs.id","=","entrees.visiteur_id")
+            ->select("visiteurs.*",)
+            ->where("visiteurs.numcni",$cni)
+            ->whereNull("entrees.sortie")
+            ->get();
+        }
+        else
+        {
+            return DB::table("visiteurs")
+            ->join("entrees","visiteurs.id","=","entrees.visiteur_id")
+            ->select("visiteurs.*","entrees.created_at as entree","entrees.sortie","entrees.id as entree_id")
+            ->where("visiteurs.site_id",$user->site_id)
+            ->where("visiteurs.numcni",$cni)
+            ->whereNull("entrees.sortie")
+            ->get();
+
+        }
+
+    }
+
+    // DB::table("entrees")->where("id",$id)
 
 }

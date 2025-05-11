@@ -105,7 +105,9 @@
         <div class="card ">
             <div class="card-header">LISTE D'ENREGISTREMENT DES Entrees</div>
             <div class="card-body">
-
+                @php
+                $user = Auth::user();
+            @endphp
                 <table  id="datable_3" class="table table-bordered table-responsive-md table-striped text-center datatable-buttons">
                     <thead>
                         <tr>
@@ -128,12 +130,14 @@
                             <td>{{ $visiteur->service }}</td>
                             <td>@if($visiteur->entree) {{ date('d-m-Y H:i', strtotime($visiteur->entree)) }} @endif</td>
                             <td>
-                                @if($visiteur->entree)
-                                    @if($visiteur->sortie)
-                                        {{ date('d-m-Y H:i', strtotime($visiteur->sortie)) }}
-                                    @else
-                                        <a href="{{ route('save.sortie', ['id'=>$visiteur->entree_id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
-                                   @endif
+                                @if ($user->role=="admin" ||  ($user->role=="utilisateur"))
+                                    @if($visiteur->entree)
+                                        @if($visiteur->sortie)
+                                            {{ date('d-m-Y H:i', strtotime($visiteur->sortie)) }}
+                                        @else
+                                            <a href="{{ route('save.sortie', ['id'=>$visiteur->entree_id]) }}" role="button" class="btn btn-primary"  title="Enregistrer Sortie"><i class="fas fa-calendar"></i></a>
+                                    @endif
+                                    @endif
                                 @endif
                             </td>
 

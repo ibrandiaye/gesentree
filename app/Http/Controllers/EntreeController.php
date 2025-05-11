@@ -89,7 +89,7 @@ class EntreeController extends Controller
             file_put_contents($filePath, $base64Image);
 
         }
-        if($user->role=="admin") 
+        if($user->role=="admin")
         {
             $service = $this->serviceRepository->getById($request->service_id);
             $request->merge(["site_id"=>$service->site_id,'photo'=>$fileName]);
@@ -100,12 +100,22 @@ class EntreeController extends Controller
             $request->merge(["site_id"=>$user->site_id,'photo'=>$fileName]);
 
         }
+        //Verifier si le visiteur a une entree et on n'a pas enregistrer la sortie
+
+        $sortieNonEnregiste = $this->visiteurRepository->verifierVisiteur($request['numcni']);
+
+        //dd($sortieNonEnregiste);
+        if(empty($sortieNonEnregiste))
+        {
+            return redirect()->back()->withErrors("Cette Visiteur à une entree dont la sortie n'est pas enregistré")->withInput();
+        }
         $chercher = DB::table("recherchers")
         ->where([['nom',$request->nom],['prenom',$request->prenom],['datenaiss',$request->datenaiss]])
         ->orwhere([['nom',$request->nom],['prenom',$request->prenom],['prenompere',$request->prenompere]])
         ->orwhere([['nom',$request->nom],['prenom',$request->prenom],['nommere',$request->nommere],['prenommere',$request->prenommere]])
         ->first();
         $message = null;
+
         if($chercher)
         {
             $request->merge(["commentaire"=>$chercher->motif]);
@@ -118,7 +128,7 @@ class EntreeController extends Controller
             $visiteur =  $this->visiteurRepository->store($request->only([ 'site_id','service_id','employe_id','nom','prenom','datenaiss','lieunaiss','numelec','numcni','commune',
             'sexe','nationalite','date_emission','date_expiration','mrz','photo','numcarte','prenompere','nommere','prenommere']));
         }
-      
+
         $request->merge(["visiteur_id"=>$visiteur->id]);
         $entrees = $this->entreeRepository->store($request->all());
         if($chercher)
@@ -198,5 +208,5 @@ class EntreeController extends Controller
         DB::table("entrees")->where("id",$id)->update(['sortie'=> date('Y-m-d H:i:s')]);
         return redirect()->back()->with("success","Sortie Enregistre avec succés");
     }
-   
+
 }

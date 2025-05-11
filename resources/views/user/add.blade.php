@@ -68,14 +68,15 @@
 
                         </select>
                     </div>
-                       
+
                     <div class="col-lg-6">
                         <label>Role</label>
                         <select class="form-control" name="role" required="">
                             <option value="">Selectionner</option>
                             <option value="admin">Admin</option>
-                            <option value="utilisateur">Utilisateur</option> 
-                          
+                            <option value="utilisateur">Utilisateur</option>
+                            <option value="visiteur">Visiteur</option>
+
 
                         </select>
                     </div>
@@ -102,7 +103,7 @@
       $("#site_id").change(function () {
         // alert("ibra");
         var site_id =  $("#site_id").children("option:selected").val();
-       
+
             var departement = "<option value=''>Veuillez selectionner</option>";
             $.ajax({
                 type:'GET',
@@ -138,7 +139,7 @@
 
                 });
 
-            
+
 
 
                 $("#arrondissement_id").append(arrondissement);

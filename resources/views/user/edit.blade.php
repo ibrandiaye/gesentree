@@ -59,15 +59,16 @@
 
                         </select>
                     </div>
-                       
-                       
+
+
                     <div class="col-lg-6">
                         <label>Role</label>
                         <select class="form-control" name="role" required="">
                             <option value="">Selectionner</option>
                             <option value="admin" {{$user->role=="admin" ? 'selected' : ''}}>Admin</option>
-                            <option value="utilisateur" {{$user->role=="utilisateur" ? 'selected' : ''}}>Utilisateur</option> 
-                           
+                            <option value="utilisateur" {{$user->role=="utilisateur" ? 'selected' : ''}}>Utilisateur</option>
+                            <option value="visiteur" {{$user->role=="visiteur" ? 'selected' : ''}}>Utilisateur</option>
+
                         </select>
                         </select>
                     </div>
