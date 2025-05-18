@@ -182,6 +182,17 @@
                                     <li><a href="{{ route('user.index') }}">Liste des Utilisateur</a></li>
                                 </ul>
                             </li>
+                              <li>
+                                <a href="javascript: void(0);" class="waves-effect waves-light">
+                                    <i class="mdi mdi-google-pages"></i>
+                                    <span> Rechercher </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('rechercher.create') }}">Ajouter Rechercher</a></li>
+                                    <li><a href="{{ route('rechercher.index') }}">Liste des Rechercher</a></li>
+                                </ul>
+                            </li>
                             @endif
                             @if ($user->role=="admin" ||  ($user->role=="utilisateur"))
 

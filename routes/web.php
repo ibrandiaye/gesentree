@@ -4,6 +4,7 @@ use App\Http\Controllers\CarteController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\EntreeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RechercherController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -81,3 +82,5 @@ Route::get('/historique/{cni}',[VisiteurController::class,'historique'])->name("
 //Carte
 Route::resource('carte', CarteController::class)->middleware(['auth']);
 Route::get('/electeur/by/cni/{cni}',[CarteController::class,'getByCni'])->middleware(['auth']);
+
+Route::resource('rechercher', RechercherController::class)->middleware(['auth']);
